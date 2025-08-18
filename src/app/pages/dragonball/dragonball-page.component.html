@@ -1,0 +1,42 @@
+<h1>Dragonball Page</h1>
+<hr/>
+
+<section class="row">
+    <div class="col-12 col-sm-6">
+        <h3>Agregar: {{name()}}</h3>
+        <input 
+            type="text" 
+            class="form-control" 
+            placeholder="Nombre"
+            [value]="name()"
+            (change)="name.set(txtName.value)"
+            #txtName
+        />
+        <input type="number" class="form-control mt-2" placeholder="Poder"/>
+
+        <button class="mt-2 btn btn-primary">Agregar</button>
+    </div>
+
+    <div class="col-12 col-sm-6">
+        <h3>Listado</h3>
+
+        <ul>
+            @for (chr of characters(); track chr.id; let idx=$index){
+                 @if (chr.power>1000){
+                <li>
+                    <span>{{chr.id}} - {{chr.name}}</span>
+                    <strong
+                        [class.text-danger]="chr.power > 9000"
+                        [class.text-info]="chr.power < 8000"> 
+                        
+                        ({{ chr.power}})
+                </strong>
+                                         
+                </li>
+                }
+            }
+        
+
+        </ul>
+    </div>
+</section>
