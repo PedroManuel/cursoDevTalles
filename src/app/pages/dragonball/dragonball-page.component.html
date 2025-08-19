@@ -10,11 +10,20 @@
             placeholder="Nombre"
             [value]="name()"
             (change)="name.set(txtName.value)"
+            (input)="name.set(txtName.value)"
             #txtName
         />
-        <input type="number" class="form-control mt-2" placeholder="Poder"/>
+        <input 
+            type="number" 
+            class="form-control mt-2" 
+            placeholder="Poder"
+            [value]="power()"
+            #txtPower
+            (change)="power.set(+txtPower.value)"
+            (input)="power.set(+txtPower.value)"
+        />
 
-        <button class="mt-2 btn btn-primary">Agregar</button>
+        <button (click)="addCharacter()" class="mt-2 btn btn-primary">Agregar</button>
     </div>
 
     <div class="col-12 col-sm-6">
@@ -24,7 +33,7 @@
             @for (chr of characters(); track chr.id; let idx=$index){
                  @if (chr.power>1000){
                 <li>
-                    <span>{{chr.id}} - {{chr.name}}</span>
+                    <span>{{idx}} - {{chr.name}}</span>
                     <strong
                         [class.text-danger]="chr.power > 9000"
                         [class.text-info]="chr.power < 8000"> 

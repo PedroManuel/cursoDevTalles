@@ -1,0 +1,20 @@
+ <h3>{{listName()}}</h3>
+
+<ul>
+    @for (chr of characters(); track chr.id; let idx=$index){
+            @if (chr.power>1000){
+        <li>
+            <span>{{idx}} - {{chr.name}}</span>
+            <strong
+                [class.text-danger]="chr.power > 9000"
+                [class.text-info]="chr.power < 8000"> 
+                
+                ({{ chr.power}})
+        </strong>
+                                    
+        </li>
+        }
+    }
+
+
+</ul>
