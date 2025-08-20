@@ -4,13 +4,13 @@
 <section class="row">
     <div class="col-12 col-sm-6">
         <character-app
-            (newCharacter)="addCharacter($event)"
+            (newCharacter)="dragoballService.addCharacter($event)"
         ></character-app>
     </div>
 
     <div class="col-12 col-sm-6">
         <dragon-character-list 
-            [characters]="characters()"
+            [characters]="dragoballService.characters()"
             [listName]="'Lista Fuertes'"></dragon-character-list>
        
     </div>
